@@ -1,0 +1,44 @@
+<button class="btn btn-secondary mt-4" (click)="goBack()">Retour vers la liste</button>
+<div class="container">
+    <div class="col-8 stretch-card mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit comic {{ comic.title }}</h4>
+                <form class="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="comic.title" [(ngModel)]="comic.title"
+                            [value]="comic.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Scriptwriter</label>
+                        <input type="text" class="form-control" name="comic.scriptWriter"
+                            [(ngModel)]="comic.scriptWriter" [value]="comic.scriptWriter">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Illustrator</label>
+                        <input type="text" class="form-control" name="comic.illustrator" [(ngModel)]="comic.illustrator"
+                            required [value]="comic.illustrator">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Publisher</label>
+                        <input type="text" class="form-control" name="comic.publisher" [(ngModel)]="comic.publisher"
+                            required [value]="comic.publisher">
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <label class="form-check-label text-muted">
+                                <input type="checkbox" class="form-check-input" name="comic.favorite"
+                                    [(ngModel)]="comic.favorite" required [value]="comic.favorite">
+                                <i class="input-helper"></i>
+                                Add Comic to Favorite
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success col-lg-8 mr-2" (click)="editComic()">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

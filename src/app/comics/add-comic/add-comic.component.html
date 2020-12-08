@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="col-8 stretch-card mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add comic</h4>
+        <form class="form" [formGroup]="addComicForm">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" formControlName="title" 
+            [class.is-invalid]="addComicForm().get('title').invalid && addComicForm().get('title').touched">
+            <div class="invalid-feedback" [class.d-none]="addComicForm().get('title').valid || ddComicForm().get('title').untouched" >
+              Title must be not empty
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Script Writer</label>
+            <input type="text" class="form-control" formControlName="scriptWriter">
+          </div>
+          <div class="form-group">
+            <label>Illustrator</label>
+            <input type="text" class="form-control" formControlName="illustrator" required>
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName1">Publisher</label>
+            <input type="text" class="form-control" formControlName="publisher" required>
+          </div>
+         
+          <div class="mb-4">
+            <div class="form-check">
+              <label class="form-check-label text-muted">
+                <input type="checkbox" class="form-check-input" formControlName="favorite" (change)="onCheckedFavorite($event)" required>
+                <i class="input-helper"></i>
+                 Add Comic to Favorite
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary mb-4" (click)="addAlbum()">Ajouter un album</button><br>
+          <div *ngFor="let album of getAlbum().controls; let i=index">
+            <div [formGroup]="album">
+              <div class="form-group">
+                <input type="number" class="form-control" formControlName="number" required placeholder="Number">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="title" required placeholder="Title">
+              </div>
+              <div class="form-group">
+                <input type="date" class="form-control" formControlName="publicationDate" required
+                  placeholder="Date of publication">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="coverName" required placeholder="cover name">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success col-lg-8 mr-2" (click)="addComic()">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
