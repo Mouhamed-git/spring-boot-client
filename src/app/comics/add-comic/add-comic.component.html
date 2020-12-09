@@ -1,59 +1,76 @@
 <div class="container">
-  <div class="col-8 stretch-card mt-4">
+  <div class="col-lg-8 stretch-card mt-4 mb-4">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Add comic</h4>
         <form class="form" [formGroup]="addComicForm">
           <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" formControlName="title" 
-            [class.is-invalid]="addComicForm().get('title').invalid && addComicForm().get('title').touched">
-            <div class="invalid-feedback" [class.d-none]="addComicForm().get('title').valid || ddComicForm().get('title').untouched" >
-              Title must be not empty
+            <input type="text" class="form-control" formControlName="title"
+              [class.is-invalid]="getTitle().invalid && getTitle().touched">
+            <div class="invalid-feedback" [class.d-none]="getTitle().valid || getTitle().untouched">
+              This field is required!
             </div>
           </div>
+
           <div class="form-group">
             <label>Script Writer</label>
-            <input type="text" class="form-control" formControlName="scriptWriter">
+            <input type="text" class="form-control" formControlName="scriptWriter"
+              [class.is-invalid]="getScriptWriter().invalid && getScriptWriter().touched">
+            <div class="invalid-feedback" [class.d-none]="getScriptWriter().valid || getScriptWriter().untouched">
+              This field is required!
+            </div>
           </div>
           <div class="form-group">
             <label>Illustrator</label>
-            <input type="text" class="form-control" formControlName="illustrator" required>
-            
+            <input type="text" class="form-control" formControlName="illustrator"
+              [class.is-invalid]="getIllustrator().invalid && getIllustrator().touched">
+            <div class="invalid-feedback" [class.d-none]="getIllustrator().valid || getIllustrator().untouched">
+              This field is required!
+            </div>
           </div>
           <div class="form-group">
-            <label for="exampleInputName1">Publisher</label>
-            <input type="text" class="form-control" formControlName="publisher" required>
+            <label>Publisher</label>
+            <input type="text" class="form-control" formControlName="publisher"
+              [class.is-invalid]="getPublisher().invalid && getPublisher().touched">
+            <div class="invalid-feedback" [class.d-none]="getPublisher().valid || getPublisher().untouched">
+              This field is required!
+            </div>
           </div>
-         
+
           <div class="mb-4">
             <div class="form-check">
               <label class="form-check-label text-muted">
-                <input type="checkbox" class="form-check-input" formControlName="favorite" (change)="onCheckedFavorite($event)" required>
+                <input type="checkbox" class="form-check-input" formControlName="favorite"
+                  (change)="onCheckedFavorite($event)">
                 <i class="input-helper"></i>
-                 Add Comic to Favorite
+                Add Comic to Favorite
               </label>
             </div>
           </div>
-          <button class="btn btn-primary mb-4" (click)="addAlbum()">Ajouter un album</button><br>
-          <div *ngFor="let album of getAlbum().controls; let i=index">
+
+          <div *ngFor="let album of getAlbum()?.controls">
             <div [formGroup]="album">
               <div class="form-group">
-                <input type="number" class="form-control" formControlName="number" required placeholder="Number">
+                <input type="number" min="1" class="form-control" formControlName="number" placeholder="Number">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" formControlName="title" required placeholder="Title">
+                <input type="text" class="form-control" formControlName="title" placeholder="Title(obligatoire)">
               </div>
+
               <div class="form-group">
-                <input type="date" class="form-control" formControlName="publicationDate" required
+                <input type="date" class="form-control" formControlName="publicationDate"
                   placeholder="Date of publication">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" formControlName="coverName" required placeholder="cover name">
+                <input type="text" class="form-control" formControlName="coverName" placeholder="cover name">
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-success col-lg-8 mr-2" (click)="addComic()">Submit</button>
+
+          <button class="btn btn-primary mb-4" (click)="addAlbum()">Add album</button><br>
+          <button type="submit" class="btn btn-success col-lg-8 mr-2" (click)="addComic()"
+            [disabled]="addComicForm.invalid">Save</button>
         </form>
       </div>
     </div>

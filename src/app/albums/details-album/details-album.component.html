@@ -1,9 +1,10 @@
-<button class="btn btn-secondary mt-4" (click)="goBack()">Retour vers la liste</button>
 <div class="container">
-    <div class="col-8 stretch-card mt-4">
+    <div class="col-lg-8 stretch-card mt-4 mb-4">
         <div class="card">
             <div class="card-body">
+                <button class="btn btn-secondary mt-4" (click)="goBack()">Go to list</button>
                 <h4>Album <strong>{{ album?.title }}</strong> details</h4>
+                <hr>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"> <strong>Id:</strong> {{ album?.id }}</li>
                     <li class="list-group-item"><strong>Number:</strong> {{ album?.number }}</li>
@@ -11,8 +12,8 @@
                     <li class="list-group-item"><strong>Pulblication Date:</strong> {{ album?.publicationDate }}</li>
                     <li class="list-group-item"><strong>Cover name: </strong>{{ album?.coverName }}</li>
                 </ul>
+                <button class='btn btn-danger' (click)="deleteAlbum(album.id)">Delete</button>
             </div>
         </div>
     </div>
 </div>
-<button class='btn btn-danger' (click)="deleteAlbum(album.id)">Delete</button>

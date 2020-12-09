@@ -71,5 +71,4 @@ export class ComicListComponent implements OnInit {
     this.router.navigate(['details-album', id]);
   }
 
- 
 }

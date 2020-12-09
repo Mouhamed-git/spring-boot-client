@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'spring-boot-client';
+  title = 'Angular 11 + Spring boot 2.4';
+
+
+
 }
+

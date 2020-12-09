@@ -1,13 +1,30 @@
+<!-- Links -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li>
-        <a class="nav-link" routerLink="/comics">Comic list</a>
+        <a class="nav-link text-light font-weight-bold" routerLink="/comics">Comic list</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  routerLink="add-comic">Add comic</a>
+        <a class="nav-link text-light font-weight-bold" routerLink="add-comic">Add comic</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light font-weight-bold" routerLink="title-comic">Search Comic</a>
       </li>
     </ul>
   </div>
 </nav>
+<!-- <h4 class="text-center font-weight-bold mt-4"> {{ title }}</h4>
+<hr> -->
 <router-outlet></router-outlet>
+
+<!-- footer -->
+<!-- <footer class="footer bg-primary">
+  <div class="d-sm-flex justify-content-center justify-content-sm-between py-2">
+    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © bootstrapdash.com
+      2020</span>
+    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Free <a
+        href="https://www.bootstrapdash.com/angular-admin-templates/" target="_blank"> angular admin template </a> from
+      <a href="https://www.bootstrapdash.com/" target="_blank">bootstrapdash.com </a></span>
+  </div>
+</footer> -->

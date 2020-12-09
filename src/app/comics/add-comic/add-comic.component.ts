@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { BackendService } from '../../service/backendService';
 
 import Swal from 'sweetalert2';
-import { Album } from 'src/app/helpers/Album';
 
 
 @Component({
@@ -14,7 +13,7 @@ import { Album } from 'src/app/helpers/Album';
 })
 export class AddComicComponent implements OnInit {
 
-  album : Album;
+
   addComicForm= this.formBuilder.group({
     title: ['', [Validators.required]],
     scriptWriter: ['', [Validators.required]],
@@ -31,31 +30,46 @@ export class AddComicComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTitle() {
+    return this.addComicForm.get('title');
+  }
+
+  getScriptWriter() {
+    return this.addComicForm.get('scriptWriter');
+  }
+
+  getIllustrator() {
+    return this.addComicForm.get('illustrator');
+  }
+
+  getPublisher() {
+    return this.addComicForm.get('publisher');
+  }
+
   getAlbum() {
     return this.addComicForm.get('albums') as FormArray;
   }
 
   addAlbum() {
     this.getAlbum().push(this.formBuilder.group({
-      number: [0, Validators.required],
-      title: ['', Validators.required],
-      publicationDate: ['', Validators.required],
-      coverName: ['', Validators.required],
+      number: [],
+      title: ['', [Validators.required]],
+      publicationDate: [''],
+      coverName: ['']
     }))
   }
 
   onCheckedFavorite(e) {
     if(e.target.checked) {
-      this.addComicForm.get('acceptTerms').setValue(true)
+      this.addComicForm.get('favorite').setValue(true)
     }else 
-    this.addComicForm.get('acceptTerms').setValue(false);
+    this.addComicForm.get('favorite').setValue(false);
   } 
 
   addComic() {
     console.log(this.addComicForm.value);
     this.backendService.onPost('comics', this.addComicForm.value)
     .subscribe((data) => {
-          console.log(data);
           Swal.fire('Your comic has been successful saved!', 'success');
           this.router.navigate(['/comics'])
         }),

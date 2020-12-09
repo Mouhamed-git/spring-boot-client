@@ -17,7 +17,11 @@ export class BackendService {
 
 
   onGetById(url:String, id:number) {
-    return this.httpClient.get(environment.apiUrl+url+'/'+id).pipe(response=> response )
+    return this.httpClient.get(environment.apiUrl+url+'/'+id).pipe(response=> response)
+  }
+
+  onGetByTitle(url: String, title: String) {
+    return this.httpClient.get(environment.apiUrl+url+'/?slug='+title).pipe(response=> response)
   }
 
   onPost(url:String, data:any) {

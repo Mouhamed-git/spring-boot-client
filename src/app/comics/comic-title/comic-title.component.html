@@ -1,0 +1,35 @@
+<button [hidden]="!searchComic" class="btn btn-secondary mt-4" routerLink='/comics'>Retour vers la liste</button>
+<div class="container">
+    <div class="col-lg-8 stretch-card mt-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div [hidden]="searchComic">
+                    <h4 class="card-title">Search comic</h4>
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <input class="form-control me-2" type="text" name="slug" [(ngModel)]="slug"
+                            placeholder="Search comic by title" required>
+                        <button class="btn btn-outline-success mt-4" type="submit"
+                            [disabled]="f.invalid">Search</button>
+                    </form>
+                </div>
+                <h4 [hidden]="!searchComic" class="text-center">List comic</h4>
+                <div *ngFor="let c of comic">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <strong>Id:</strong> {{ c?.id }}</li>
+                        <li class="list-group-item"><strong>Title:</strong> {{ c?.title }}</li>
+                        <li class="list-group-item"><strong>Script Writer:</strong> {{ c?.scriptWriter }}</li>
+                        <li class="list-group-item"><strong>Illustrator: </strong>{{ c?.illustrator }}</li>
+                        <li class="list-group-item"><strong>Publisher</strong>: {{ c?.publisher }}</li>
+                        <li class="list-group-item"><strong>Favorite</strong>: {{ c?.favorite }}</li>
+                        <li class="list-group-item"><strong>Albums:</strong>
+                            <div *ngFor="let album of c.albums; let i = index">
+                                <a routerLink="/details-album/{{album.id}}"> {{ album?.title }} </a>
+                            </div>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

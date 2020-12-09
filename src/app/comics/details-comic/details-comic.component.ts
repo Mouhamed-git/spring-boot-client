@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Album } from 'src/app/helpers/Album';
 import { Comic } from '../../helpers/Comic';
 import { BackendService } from '../../service/backendService';
 
@@ -12,6 +13,7 @@ export class DetailsComicComponent implements OnInit {
   
   id: number;
   comic : Comic;
+ 
   constructor(private router: Router, private route: ActivatedRoute, private backendService: BackendService) { }
 
   ngOnInit(): void {

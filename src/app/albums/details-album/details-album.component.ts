@@ -13,13 +13,13 @@ import Swal from 'sweetalert2';
 export class DetailsAlbumComponent implements OnInit {
 
   id: number;
-  album: Album[];
+  album: Album;
   constructor(private backendService: BackendService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.backendService.onGetById('albums', this.id)
-    .subscribe((data: Album[]) => {
+    .subscribe((data: Album) => {
       this.album = data;
       console.log(data);
     }), 

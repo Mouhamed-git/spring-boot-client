@@ -9,7 +9,7 @@ import { BackendService } from './service/backendService';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

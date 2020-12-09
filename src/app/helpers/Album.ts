@@ -4,4 +4,5 @@ export class Album {
     title: String;
     publicationDate: Date;
     coverName: String;
+    comic_id: number;
 }

@@ -1,19 +1,23 @@
-<button class="btn btn-secondary mt-4" (click)="goBack()">Retour vers la liste</button>
 <div class="container">
-  <div class="col-8 stretch-card mt-4">
+  <div class="col-lg-8 stetch-card mt-4 mb-4">
     <div class="card">
       <div class="card-body">
-        <h4>Comic <strong>{{ comic?.title }}</strong> details</h4>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"> <strong>Id:</strong> {{ comic?.id }}</li>
-          <li class="list-group-item"><strong>Title:</strong> {{ comic?.title }}</li>
-          <li class="list-group-item"><strong>Script Writer:</strong> {{ comic?.scriptWriter }}</li>
-          <li class="list-group-item"><strong>Illustrator: </strong>{{ comic?.illustrator }}</li>
-          <li class="list-group-item"><strong>Publisher</strong>: {{ comic?.publisher }}</li>
-          <li class="list-group-item"><strong>Favorite</strong>: {{ comic?.favorite }}</li>
-          <li class="list-group-item"><strong>Albums:</strong> {{ comic?.albums }}</li>
-        </ul>
+        <button class="btn btn-secondary mt-4" (click)="goBack()">Go to list</button>
+        <div class="col-lg-8 stretch-card mt-4 mb-4">
+          <h4>Comic <strong>{{ comic?.title }}</strong> details</h4>
+          <hr>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> <strong>Id:</strong> {{ comic?.id }}</li>
+            <li class="list-group-item"><strong>Title:</strong> {{ comic?.title }}</li>
+            <li class="list-group-item"><strong>Script Writer:</strong> {{ comic?.scriptWriter }}</li>
+            <li class="list-group-item"><strong>Illustrator: </strong>{{ comic?.illustrator }}</li>
+            <li class="list-group-item"><strong>Publisher</strong>: {{ comic?.publisher }}</li>
+            <li class="list-group-item"><strong>Favorite</strong>: {{ comic?.favorite }}</li>
+            <li class="list-group-item"><strong>Albums:</strong>
+              <div *ngFor="let album of comic.albums; let i = index">
+                <a routerLink="/details-album/{{album.id}}"> {{ album?.title }} </a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-</div>

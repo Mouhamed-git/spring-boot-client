@@ -18,7 +18,9 @@ export class EditComicComponent implements OnInit {
   constructor(private route: ActivatedRoute, private backendService: BackendService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.comic = new Comic();
+    console.log(this.comic);
     this.id = this.route.snapshot.params['id'];
     this.backendService.onGetById("/comics/", this.id)
     .subscribe((data: Comic) => {
@@ -27,8 +29,6 @@ export class EditComicComponent implements OnInit {
     error => {
       console.log(error);
     }
-    console.log(this.comic.albums.title);
-
   }
 
   editComic() {
@@ -36,6 +36,7 @@ export class EditComicComponent implements OnInit {
     .subscribe((data: Comic) => {
       console.log(data);
       this.comic = new Comic();
+      console.log(this.comic);
       Swal.fire('Your comic has been successful updated!', 'success');
       this.router.navigate(['/comics']);
     })
